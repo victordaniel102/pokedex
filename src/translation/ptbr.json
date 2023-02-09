@@ -1,0 +1,10 @@
+{
+  "home": {
+    "navbar": {
+      "home": "Início",
+      "pokedex": "Pokedex",
+      "about": "Sobre"
+    },
+    "start": "PRESSIONE ENTER PARA COMEÇAR"
+  }
+}
