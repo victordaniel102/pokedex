@@ -9,3 +9,8 @@ export const NavbarContainer = styled.div`
   position: absolute;
   top: 0;
 `;
+
+export const NavbarMenu = styled.div`
+  display: flex;
+  gap: 10px;
+`;
