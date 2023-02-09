@@ -7,17 +7,40 @@ import { Hero, HomeContainer, PressEnterText } from "./style";
 import { useContext, useEffect } from "react";
 import { LanguageContext } from "../../context/language";
 import { useNavigate } from "react-router-dom";
+import { checkFullFilledPromiseAndReturnValue } from "../../utils";
+import pokemonService from "../../services/entities/pokemon.service";
+import { setPokemons, updatePokemon } from "../../store/reducers/pokemons";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { dictionary } = useContext(LanguageContext);
 
   useEffect(() => {
+    const getPokemonList = async () => {
+      let data = await pokemonService.getPokemons();
+      dispatch(setPokemons(data.results));
+
+      let response = await Promise.all(
+        data.results.map((pokemon) =>
+          pokemonService.getPokemonByUrl(pokemon.url)
+        )
+      );
+
+      response.forEach((pokemon) => {
+        dispatch(
+          updatePokemon({ name: pokemon.name, updatedPokemon: pokemon })
+        );
+      });
+    };
+
     const handleKeyUp = (e: KeyboardEvent) => {
       if (e.key === "Enter") navigate("/pokemons");
     };
     window.addEventListener("keyup", handleKeyUp);
 
+    getPokemonList();
     return () => {
       window.removeEventListener("keyup", handleKeyUp);
     };
