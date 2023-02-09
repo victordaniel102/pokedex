@@ -1,16 +1,14 @@
 import { useSelector } from "react-redux";
 import PokemonCard from "../../components/molecules/PokemonCard";
-import Navbar from "../../components/organisms/Navbar";
+import PokedexTemplate from "../../components/templates/Pokedex";
 import { RootState } from "../../store";
-import { CardsContainer, PokemonsContainer } from "./style";
+import { CardsContainer } from "./style";
 
 const Pokemons = () => {
   const { pokemons } = useSelector((state: RootState) => state.pokemons);
-  console.log(pokemons);
 
   return (
-    <PokemonsContainer>
-      <Navbar />
+    <PokedexTemplate>
       <CardsContainer>
         {pokemons.map((pokemon) => (
           <PokemonCard
@@ -20,7 +18,7 @@ const Pokemons = () => {
           />
         ))}
       </CardsContainer>
-    </PokemonsContainer>
+    </PokedexTemplate>
   );
 };
 

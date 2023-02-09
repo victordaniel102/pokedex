@@ -36,7 +36,7 @@ const Home = () => {
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
-      if (e.key === "Enter") navigate("/pokemons");
+      if (e.key === "Enter") navigate("/pokedex");
     };
     window.addEventListener("keyup", handleKeyUp);
 
