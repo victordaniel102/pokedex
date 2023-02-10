@@ -7,32 +7,32 @@ import { Hero, HomeContainer, PressEnterText } from "./style";
 import { useContext, useEffect } from "react";
 import { LanguageContext } from "../../context/language";
 import { useNavigate } from "react-router-dom";
-import { checkFullFilledPromiseAndReturnValue } from "../../utils";
 import pokemonService from "../../services/entities/pokemon.service";
-import { setPokemons, updatePokemon } from "../../store/reducers/pokemons";
-import { useDispatch } from "react-redux";
+import { setConfigs, addOrUpdatePokemons } from "../../store/reducers/pokemons";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { dictionary } = useContext(LanguageContext);
+  const { next } = useSelector((state: RootState) => state.pokemons);
 
   useEffect(() => {
     const getPokemonList = async () => {
-      let data = await pokemonService.getPokemons();
-      dispatch(setPokemons(data.results));
+      if (!next) {
+        let data = await pokemonService.getPokemonList();
+        dispatch(setConfigs(data));
+        dispatch(addOrUpdatePokemons(data.results));
 
-      let response = await Promise.all(
-        data.results.map((pokemon) =>
-          pokemonService.getPokemonByUrl(pokemon.url)
-        )
-      );
-
-      response.forEach((pokemon) => {
-        dispatch(
-          updatePokemon({ name: pokemon.name, updatedPokemon: pokemon })
+        let response = await Promise.all(
+          data.results.map((pokemon) =>
+            pokemonService.getPokemonDetailByUrl(pokemon.url!)
+          )
         );
-      });
+
+        addOrUpdatePokemons(response);
+      }
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {

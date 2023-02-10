@@ -12,6 +12,7 @@ export const TemplateContent = styled.div`
   width: 100%;
   display: flex;
   padding: 50px;
+  gap: 25px;
 
   @media (min-width: 1920px) {
     width: 70%;

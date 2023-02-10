@@ -29,6 +29,6 @@ export const PokemonName = styled.p`
   text-transform: capitalize;
 `;
 
-export const PokemonTag = styled.p`
+export const PokemonTag = styled.span`
   color: ${(props) => props.theme.tertiary};
 `;
