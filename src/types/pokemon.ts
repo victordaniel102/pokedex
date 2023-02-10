@@ -20,9 +20,10 @@ export type PokemonResponse = {
 };
 
 export type Pokemon = {
-  id: number;
+  id?: number;
   name: string;
-  image: string;
-  description: string;
-  types: PokemonType[];
+  image?: string;
+  description?: string;
+  types?: PokemonType[];
+  url?: string;
 };

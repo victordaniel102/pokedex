@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const PokemonCardContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,6 +9,12 @@ export const PokemonCardContainer = styled.div`
   background-color: ${(props) => props.theme.card};
   border-radius: 10px;
   gap: 5px;
+  cursor: pointer;
+
+  :hover {
+    transition: 0.3s;
+    background-color: ${(props) => props.theme.card + "FF"};
+  }
 `;
 
 export const PokemonName = styled.p`
@@ -22,6 +29,6 @@ export const PokemonName = styled.p`
   text-transform: capitalize;
 `;
 
-export const PokemonTag = styled.p`
+export const PokemonTag = styled.span`
   color: ${(props) => props.theme.tertiary};
 `;

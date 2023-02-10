@@ -1,4 +1,4 @@
-import { Pokemon, PokemonResponse, PokemonSingle } from "../../types/pokemon";
+import { Pokemon } from "../../types/pokemon";
 import httpService from "../http.service";
 
 type PokemonApiResponse = {
@@ -8,15 +8,8 @@ type PokemonApiResponse = {
   count: number;
 };
 
-type PokemonSingleResponse = {
-  results: PokemonSingle[];
-};
-
-type PokemonListResponse = Omit<PokemonApiResponse, "results"> &
-  PokemonSingleResponse;
-
 class PokemonService {
-  getPokemon = async (name: string): Promise<PokemonApiResponse> => {
+  getPokemonDetail = async (name: string): Promise<Pokemon> => {
     try {
       const { data } = await httpService.get(`/pokemon/${name}`, {});
 
@@ -26,7 +19,7 @@ class PokemonService {
     }
   };
 
-  getPokemonByUrl = async (url: string): Promise<PokemonResponse> => {
+  getPokemonDetailByUrl = async (url: string): Promise<Pokemon> => {
     try {
       const { data } = await httpService.request({
         baseURL: url,
@@ -39,9 +32,22 @@ class PokemonService {
     }
   };
 
-  getPokemons = async (): Promise<PokemonListResponse> => {
+  getPokemonList = async (): Promise<PokemonApiResponse> => {
     try {
       const { data } = await httpService.get(`/pokemon`, { data: {} });
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  getPokemonListByUrl = async (url: string): Promise<PokemonApiResponse> => {
+    try {
+      const { data } = await httpService.request({
+        baseURL: url,
+        method: "GET",
+      });
 
       return data;
     } catch (error) {

@@ -4,15 +4,18 @@ import { AppThemeProvider } from "./context/theme";
 import { Provider } from "react-redux";
 import AppRoutes from "./routes";
 import store from "./store";
+import { ToastProvider } from "./context/toast";
 
 function App() {
   return (
     <BrowserRouter>
       <Provider store={store}>
         <LanguageProvider>
-          <AppThemeProvider>
-            <AppRoutes />
-          </AppThemeProvider>
+          <ToastProvider>
+            <AppThemeProvider>
+              <AppRoutes />
+            </AppThemeProvider>
+          </ToastProvider>
         </LanguageProvider>
       </Provider>
     </BrowserRouter>
