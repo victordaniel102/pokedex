@@ -7,6 +7,7 @@ export const NavbarContainer = styled.div`
   justify-content: space-between;
 
   position: absolute;
+  z-index: 2;
   top: 0;
 `;
 

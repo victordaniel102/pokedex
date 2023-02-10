@@ -32,3 +32,7 @@ export const PokemonName = styled.p`
 export const PokemonTag = styled.span`
   color: ${(props) => props.theme.tertiary};
 `;
+
+export const PokemonImage = styled.div`
+  padding: 10px 0;
+`;

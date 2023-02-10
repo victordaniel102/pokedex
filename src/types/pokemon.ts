@@ -2,6 +2,11 @@ type PokemonType = {
   name: string;
 };
 
+type PokemonStats = {
+  name: string;
+  base: string;
+};
+
 type PokemonResponseType = {
   slot: number;
   type: { name: string };
@@ -25,5 +30,6 @@ export type Pokemon = {
   image?: string;
   description?: string;
   types?: PokemonType[];
+  stats?: PokemonStats[];
   url?: string;
 };

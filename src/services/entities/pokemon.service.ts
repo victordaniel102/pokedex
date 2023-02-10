@@ -1,15 +1,11 @@
-import { Pokemon } from "../../types/pokemon";
+import {
+  PokemonDetailResponse,
+  PokemonListResponse,
+} from "../../types/responses";
 import httpService from "../http.service";
 
-type PokemonApiResponse = {
-  results: Pokemon[];
-  previous?: string | null;
-  next?: string | null;
-  count: number;
-};
-
 class PokemonService {
-  getPokemonDetail = async (name: string): Promise<Pokemon> => {
+  getPokemonDetail = async (name: string): Promise<PokemonDetailResponse> => {
     try {
       const { data } = await httpService.get(`/pokemon/${name}`, {});
 
@@ -19,7 +15,9 @@ class PokemonService {
     }
   };
 
-  getPokemonDetailByUrl = async (url: string): Promise<Pokemon> => {
+  getPokemonDetailByUrl = async (
+    url: string
+  ): Promise<PokemonDetailResponse> => {
     try {
       const { data } = await httpService.request({
         baseURL: url,
@@ -32,9 +30,9 @@ class PokemonService {
     }
   };
 
-  getPokemonList = async (): Promise<PokemonApiResponse> => {
+  getPokemonList = async (): Promise<PokemonListResponse> => {
     try {
-      const { data } = await httpService.get(`/pokemon`, { data: {} });
+      const { data } = await httpService.get(`/pokemon`);
 
       return data;
     } catch (error) {
@@ -42,11 +40,27 @@ class PokemonService {
     }
   };
 
-  getPokemonListByUrl = async (url: string): Promise<PokemonApiResponse> => {
+  getPokemonListByUrl = async (url: string): Promise<PokemonListResponse> => {
     try {
       const { data } = await httpService.request({
         baseURL: url,
         method: "GET",
+      });
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  getPokemonOtherInfo = async (id: string): Promise<any> => {
+    try {
+      const { data } = await httpService.request({
+        baseURL: `https://pokeapi.glitch.me/v1/pokemon/${id}`,
+        method: "GET",
+        headers: {
+          "User-Agent": "Pokedex (https://pokedex.dclsistemas.com.br, 1.1)",
+        },
       });
 
       return data;

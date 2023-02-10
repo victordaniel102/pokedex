@@ -27,11 +27,11 @@ const Home = () => {
 
         let response = await Promise.all(
           data.results.map((pokemon) =>
-            pokemonService.getPokemonDetailByUrl(pokemon.url!)
+            pokemonService.getPokemonDetail(pokemon.name)
           )
         );
 
-        addOrUpdatePokemons(response);
+        dispatch(addOrUpdatePokemons(response));
       }
     };
 
