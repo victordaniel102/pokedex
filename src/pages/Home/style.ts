@@ -12,6 +12,7 @@ export const HomeContainer = styled.div`
     position: absolute;
     top: -125px;
     left: -85px;
+    z-index: 0;
   }
 `;
 

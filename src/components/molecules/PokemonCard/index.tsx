@@ -1,6 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import Image from "../../atoms/Image";
-import { PokemonCardContainer, PokemonName, PokemonTag } from "./style";
+import {
+  PokemonCardContainer,
+  PokemonImage,
+  PokemonName,
+  PokemonTag,
+} from "./style";
 
 interface IPokemonCard {
   id?: string;
@@ -13,7 +18,9 @@ const PokemonCard = (props: IPokemonCard) => {
 
   return (
     <PokemonCardContainer onClick={() => navigate(`/pokemon/${props.id}`)}>
-      <Image src={props.image!} size={"md"} />
+      <PokemonImage>
+        <Image src={props.image!} size={"75px"} />
+      </PokemonImage>
       <PokemonName>
         {props.name}
         <PokemonTag>#{props.id}</PokemonTag>

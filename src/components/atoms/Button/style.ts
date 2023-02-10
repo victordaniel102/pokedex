@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 interface IButton {
-  colored: boolean;
+  colored?: boolean;
+  backgroundColor?: string;
+  textColor?: string;
 }
 
 export const ButtonContainer = styled.button<IButton>`
@@ -9,9 +11,17 @@ export const ButtonContainer = styled.button<IButton>`
   border: none;
   padding: 10px 15px;
   background-color: ${(props) =>
-    props.colored ? props.theme.primary : props.theme.background};
+    props.colored
+      ? props.backgroundColor
+        ? props.backgroundColor
+        : props.theme.primary
+      : props.theme.background};
   color: ${(props) =>
-    props.colored ? props.theme.onPrimary : props.theme.onBackground};
+    props.textColor
+      ? props.textColor
+      : props.colored
+      ? props.theme.onPrimary
+      : props.theme.onBackground};
   font-size: 16px;
   border-radius: 10px;
   transition: 0.3s;

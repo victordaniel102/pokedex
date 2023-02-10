@@ -6,11 +6,18 @@ interface IButton {
   icon?: () => ReactNode;
   onClick: Function;
   colored?: boolean;
+  backgroundColor?: string;
+  textColor?: string;
 }
 
 const Button = (props: IButton) => {
   return (
-    <ButtonContainer onClick={() => props.onClick()} colored={props.colored!}>
+    <ButtonContainer
+      onClick={() => props.onClick()}
+      colored={props.colored!}
+      backgroundColor={props.backgroundColor}
+      textColor={props.textColor}
+    >
       <>
         {props.icon ? props.icon : null} {props.text}
       </>
