@@ -10,7 +10,7 @@ type LanguagesType = "ptbr" | "en";
 
 interface ILanguageContext {
   language: LanguagesType;
-  dictionary: object;
+  dictionary: any;
   changeLanguage: (selected: LanguagesType) => void;
   selectedLanguage: Languages;
 }
