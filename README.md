@@ -13,6 +13,7 @@ Este projeto utiliza a [PokeAPI](https://pokeapi.co/) e outras para listar, pesq
 - React | Framework frontend [Docs](https://pt-br.reactjs.org/)
 - Typescript | Linguagem [Docs](https://www.typescriptlang.org/)
 - Redux | Gerenciamento de estado [Docs](https://redux.js.org/)
+- Styled Components | Estilização de componentes [Docs](https://styled-components.com/)
 
 E algumas bibliotecas como:
 
@@ -25,7 +26,7 @@ Arquitetura
 >Para o projeto foi utilizado uma arquitetura simples que nos trás simplicidade e facilidade pelo tamanho do projeto.
 
 Componentes
->Na componentização, foram utilizados os conceitos do Atomic Design para criação de componentes de forma reutilizável e organizada.
+>Na componentização, foram utilizados os conceitos do Atomic Design para criação de componentes com o styled-components de forma reutilizável e organizada.
 
 Design
 > O Design foi criado do zero com algumas insipirações da web, todo layout foi trabalhado no Figma antes do desenvolvimento da aplicação. Segue o link para o draft do projeto: [Projeto no Figma](https://www.figma.com/file/7rWtLCJ063Yk5nCMSAj7F2/Pokedex?node-id=0%3A1&t=6yGddgkL2j6NxsOz-0)
@@ -36,7 +37,7 @@ Principais
 - [x] Página inicial
 - [x] Listagem dos pokemons
   - [x] Paginação
-- [ ] Detalhe dos pokemons
+- [x] Detalhe dos pokemons
 - [ ] Favoritar pokemon
   - [ ] Listagem de favoritos 
 
@@ -51,3 +52,20 @@ Extras
 
 
 ## Instalação 
+
+>1ª Opção (Node)
+```bash
+$ npm install # Instalação dos pacotes
+ou
+$ yarn install # Instalação dos pacotes
+
+$ npm run dev # Iniciar aplicação na porta 3000 por padrão
+ou
+$ yarn dev # Iniciar aplicação na porta 3000 por padrão
+```
+
+>2ª Opção (Docker)
+```bash
+$ docker build . -t <IMAGE_NAME> # Instalação dos pacotes
+$ docker run -p 8080:8080 -d <IMAGE_NAME>
+```
