@@ -38,11 +38,18 @@ const Home = () => {
     const handleKeyUp = (e: KeyboardEvent) => {
       if (e.key === "Enter") navigate("/pokedex");
     };
+
+    const handleTouch = (e: TouchEvent) => {
+      navigate("/pokedex");
+    };
+
     window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("touchend", handleTouch);
 
     getPokemonList();
     return () => {
       window.removeEventListener("keyup", handleKeyUp);
+      window.removeEventListener("touchend", handleTouch);
     };
   }, []);
 
@@ -52,7 +59,6 @@ const Home = () => {
       <Hero>
         <Image
           src={PokemonPokedex}
-          size="500px"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.1 }}

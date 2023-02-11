@@ -10,6 +10,7 @@ import {
   PokemonDetailsFooter,
   PokemonImage,
   PokemonInfo,
+  PokemonInfoContainer,
   PokemonName,
   PokemonShadow,
   PokemonStats,
@@ -67,21 +68,25 @@ const PokemonDetails = () => {
     <PokemonDetailsTemplate>
       <PokemonDetailsContainer>
         <PokemonDetailsContent>
-          <PokemonInfo>
-            <PokemonTag>#{currentPokemon?.id}</PokemonTag>
-            <PokemonName>{currentPokemon?.name}</PokemonName>
-            <PokemonDescription>
-              {currentPokemon?.description}
-            </PokemonDescription>
-            <PokemonTypes>
-              {currentPokemon &&
-                currentPokemon?.types!.map((type) => <Type type={type.name} />)}
-            </PokemonTypes>
-          </PokemonInfo>
-          <PokemonImage>
-            <Image src={currentPokemon?.image!} size="300px" />
-            <PokemonShadow />
-          </PokemonImage>
+          <PokemonInfoContainer>
+            <PokemonInfo>
+              <PokemonTag>#{currentPokemon?.id}</PokemonTag>
+              <PokemonName>{currentPokemon?.name}</PokemonName>
+              <PokemonDescription>
+                {currentPokemon?.description}
+              </PokemonDescription>
+              <PokemonTypes>
+                {currentPokemon &&
+                  currentPokemon?.types!.map((type) => (
+                    <Type type={type.name} />
+                  ))}
+              </PokemonTypes>
+            </PokemonInfo>
+            <PokemonImage>
+              <Image src={currentPokemon?.image!} size="300px" />
+              <PokemonShadow />
+            </PokemonImage>
+          </PokemonInfoContainer>
           <PokemonStats>
             <PokemonStatsContent>
               {currentPokemon?.stats?.map((stat) => (
