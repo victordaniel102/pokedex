@@ -20,13 +20,16 @@ export const PokemonCardContainer = styled.div`
 export const PokemonName = styled.p`
   font-size: 18px;
   color: ${(props) => props.theme.onBackground};
+  text-transform: capitalize;
   display: flex;
   align-items: center;
   font-weight: bold;
   margin-top: 5px;
   gap: 5px;
 
-  text-transform: capitalize;
+  @media (max-width: 480px) {
+    font-size: 28px;
+  }
 `;
 
 export const PokemonTag = styled.span`
@@ -35,4 +38,14 @@ export const PokemonTag = styled.span`
 
 export const PokemonImage = styled.div`
   padding: 10px 0;
+
+  @media (max-width: 480px) {
+    padding: 0;
+  }
+
+  img {
+    @media (max-width: 480px) {
+      width: 150px;
+    }
+  }
 `;

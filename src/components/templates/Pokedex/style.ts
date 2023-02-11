@@ -24,6 +24,11 @@ export const TemplateContent = styled.div`
   @media (min-width: 1920px) {
     width: 70%;
   }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    padding: 25px;
+  }
 `;
 
 export const Side = styled.div`

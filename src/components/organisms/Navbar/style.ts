@@ -9,9 +9,19 @@ export const NavbarContainer = styled.div`
   position: absolute;
   z-index: 2;
   top: 0;
+
+  @media (max-width: 480px) {
+    padding: 25px;
+  }
 `;
 
 export const NavbarMenu = styled.div`
   display: flex;
   gap: 10px;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
+
+export const NavbarLogo = styled.div``;

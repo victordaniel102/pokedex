@@ -22,6 +22,12 @@ export const Hero = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  img {
+    @media (max-width: 480px) {
+      width: 80%;
+    }
+  }
 `;
 
 export const PressEnterText = styled.p`
@@ -38,6 +44,11 @@ export const PressEnterText = styled.p`
   -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
   animation-duration: 1s;
   -webkit-animation-duration: 1s;
+
+  @media (max-width: 480px) {
+    text-align: center;
+    margin-bottom: 25px;
+  }
 
   @keyframes blink {
     50% {

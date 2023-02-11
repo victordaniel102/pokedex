@@ -6,7 +6,7 @@ type ImageSize = "lg" | "md" | "sm" | string;
 
 interface IImage extends HTMLMotionProps<"img"> {
   src: string;
-  size: ImageSize;
+  size?: ImageSize;
   style?: CSSProperties;
   className?: string;
 }
@@ -31,7 +31,7 @@ const Image = (props: IImage) => {
       as={motion.img}
       src={props.src}
       className={props.className}
-      size={getSize(props.size)}
+      size={props.size ? getSize(props.size) : undefined}
       style={{ ...props.style }}
     ></ImageContainer>
   );
