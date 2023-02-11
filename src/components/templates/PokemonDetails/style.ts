@@ -10,6 +10,10 @@ export const PokemonDetailsTemplateContainer = styled.div`
     top: -125px;
     left: -85px;
     z-index: 1;
+
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 `;
 
@@ -27,4 +31,8 @@ export const Content = styled.div`
   justify-content: center;
   align-items: flex-end;
   background-color: ${(props) => props.theme.background};
+
+  @media (max-width: 480px) {
+    height: auto;
+  }
 `;

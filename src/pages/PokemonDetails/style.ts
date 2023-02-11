@@ -12,6 +12,22 @@ export const PokemonDetailsContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    margin-top: 100px;
+  }
+`;
+
+export const PokemonInfoContainer = styled.div`
+  flex: 10;
+  display: flex;
+  align-items: flex-end;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
 `;
 
 export const PokemonDetailsFooter = styled.div`
@@ -46,6 +62,11 @@ export const PokemonInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media (max-width: 480px) {
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
 `;
 
 export const PokemonTag = styled.span`
@@ -64,9 +85,13 @@ export const PokemonDescription = styled.p`
 `;
 
 export const PokemonStats = styled.div`
-  width: 100%;
+  flex: 5;
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const PokemonStatsContent = styled.div`
@@ -75,6 +100,11 @@ export const PokemonStatsContent = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 7px;
+
+  @media (max-width: 480px) {
+    margin-top: 25px;
+    width: 100%;
+  }
 `;
 
 export const PokemonTypes = styled.div`
